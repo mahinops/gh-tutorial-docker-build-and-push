@@ -1,0 +1,24 @@
+name: Docker Image Build and Push Workflow
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout to Code
+      uses: actions/checkout@v4
+
+    - name: Call Composite Action
+      id: build-and-push-id
+      uses: ./
+      with:
+        dockerhub-username: ${{ vars.DOCKERHUB_USERNAME }}
+        dockerhub-token: ${{ secrets.DOCKERHUB_SECRETS }}
+        image-name: "test-image-build-and-push"
+        image-tag: "v1"
+
+    - name: Print Result
+      run: |
+        echo "Build and Push Result is: ${{ steps.build-and-push-id.outputs.result }}"
