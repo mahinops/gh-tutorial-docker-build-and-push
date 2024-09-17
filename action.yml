@@ -59,7 +59,7 @@ runs:
     run: |
       if docker push ${{ inputs.dockerhub-username }}/${{ inputs.image-name }}:${{ inputs.image-tag }}; then
         echo "Push successful"
-        echo "resul=success" >> $GITHUB_OUTPUT
+        echo "result=success" >> $GITHUB_OUTPUT
       else
         echo "Push failed"
         echo "result=push failed" >> $GITHUB_OUTPUT
