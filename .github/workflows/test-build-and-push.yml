@@ -22,6 +22,7 @@ jobs:
         dockerhub-token: ${{ secrets.DOCKERHUB_SECRETS }}
         image-name: "test-image-build-and-push"
         image-tag: ${{ github.event.inputs.image_tag }}
+        dockerfile-path: "Dockerfile.dev"
 
     - name: Print Result
       run: |
