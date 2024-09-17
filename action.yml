@@ -78,3 +78,8 @@ runs:
       else
         echo "result=success" >> $GITHUB_OUTPUT
       fi
+
+  - name: Debug Print result
+    shell: bash
+    run: |
+      echo "Debug Result: ${{ steps.final_result.outputs.result }}"
