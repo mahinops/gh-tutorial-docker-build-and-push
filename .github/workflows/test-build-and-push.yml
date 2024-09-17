@@ -2,6 +2,10 @@ name: Docker Image Build and Push Workflow
 
 on:
   workflow_dispatch:
+    inputs:
+      image_tag:
+        description: "Enter Image tag"
+        required: true
 
 jobs:
   build-and-push:
@@ -17,7 +21,7 @@ jobs:
         dockerhub-username: ${{ vars.DOCKERHUB_USERNAME }}
         dockerhub-token: ${{ secrets.DOCKERHUB_SECRETS }}
         image-name: "test-image-build-and-push"
-        image-tag: "v1"
+        image-tag: ${{ github.event.inputs.image_tag }}
 
     - name: Print Result
       run: |
